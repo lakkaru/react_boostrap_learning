@@ -7,7 +7,10 @@ function App() {
   return (
     <div className="App">
       {/* <PostLayout/> */}
+      <div style={{marginTop:'20px'}}>
       <UserLayout/>
+      </div>
+      
     </div>
   );
 }

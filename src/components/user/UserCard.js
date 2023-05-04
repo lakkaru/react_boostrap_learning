@@ -2,14 +2,16 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function UserCard({name}) {
+function UserCard({user}) {
+    // console.log(user.company.catchPhrase);
+    
   return (
     <Card className="text-center">
-      <Card.Header>Featured</Card.Header>
+      <Card.Header>{user.username} - {user.id}</Card.Header>
       <Card.Body>
-        <Card.Title>{name}</Card.Title>
+        <Card.Title>{user.name} </Card.Title>
         <Card.Text>
-          With supporting text below as a natural lead-in to additional content.
+          {user.company.catchPhrase}
         </Card.Text>
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>

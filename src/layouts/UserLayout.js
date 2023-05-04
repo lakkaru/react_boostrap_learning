@@ -18,11 +18,12 @@ export default function UserLayout() {
   }, []);
   return (
     <div style={{display:'flex', flexDirection:'column', alignItems:'center'}}>
+      <h2>User List</h2>
       {userList.length > 0 &&
         userList.map((val, key) => {
           return (
             <div key={key} style={{ padding: "20px 0px", width: "60%" }}>
-              <UserCard name={val.name}/>
+              <UserCard user={val}/>
             </div>
           );
         })}
