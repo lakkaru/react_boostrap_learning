@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UserCard from "../components/user/UserCard";
 
-export default function UserLayout() {
+
+export default function UserLayout({getUserId}) {
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function UserLayout() {
         userList.map((val, key) => {
           return (
             <div key={key} style={{ padding: "20px 0px", width: "60%" }}>
-              <UserCard user={val}/>
+              <UserCard user={val} getUserId={getUserId}/>
             </div>
           );
         })}

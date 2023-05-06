@@ -2,8 +2,8 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function UserCard({user}) {
-    // console.log(user.company.catchPhrase);
+function UserCard({user, getUserId}) {
+    // console.log(user);
     
   return (
     <Card className="text-center">
@@ -13,9 +13,9 @@ function UserCard({user}) {
         <Card.Text>
           {user.company.catchPhrase}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button variant="primary"onClick={()=>getUserId(user.id)}>Show Posts</Button>
       </Card.Body>
-      <Card.Footer className="text-muted">2 days ago</Card.Footer>
+      <Card.Footer className="text-muted">{user.website}</Card.Footer>
     </Card>
   );
 }

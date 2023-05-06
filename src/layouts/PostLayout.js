@@ -1,7 +1,9 @@
-import React, {useEffect} from 'react'
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import PostListLayout from "./postLayout/PostListLayout";
 
-export default function PostLayout() {
+export default function PostLayout({ selectedUserId }) {
+  const [posts, setPosts] = useState([]);
   //by fetch
   // useEffect(()=>{
   //   fetch('https://jsonplaceholder.typicode.com/todos')
@@ -10,22 +12,33 @@ export default function PostLayout() {
   // },[]);
 
   //by axios
+  // console.log(`https://jsonplaceholder.typicode.com/posts/${selectedUserId}`);
+
   useEffect(() => {
-    axios
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then(function (response) {
-        // handle success
-        console.log(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .finally(function () {
-        // always executed
-      });
-  }, []);
+    if (selectedUserId) {
+      axios
+        .get(
+          `https://jsonplaceholder.typicode.com/users/${selectedUserId}/posts`
+        )
+        .then(function (response) {
+          // handle success
+          setPosts(response.data);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .finally(function () {
+          // always executed
+        });
+    }
+  }, [selectedUserId]);
+  // console.log(posts);
+
   return (
-    <div>TodoLayout</div>
-  )
+    <div style={{ marginTop: '' }}>
+      <h2>User Posts</h2>
+       {posts.length>0 && <PostListLayout postList={posts}/>}
+    </div>
+  );
 }
